@@ -4,7 +4,6 @@
 This project is an **Arduino-based Automatic Hand Sanitizer Dispenser** that provides a **touchless sanitizing solution**. The system detects a user's hand using an **IR sensor** and automatically activates a **servo motor** to press the sanitizer pump and dispense liquid.
 
 The device helps improve hygiene by **eliminating the need to touch sanitizer bottles**, making it suitable for **public spaces, classrooms, offices, and healthcare environments**.
-
 ---
 
 ## ✨ Features
