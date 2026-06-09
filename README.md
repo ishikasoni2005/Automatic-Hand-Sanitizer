@@ -1,40 +1,40 @@
 # 🧴 Automatic Hand Sanitizer Dispenser
 
-## 📌 Overview
-This project is an **Arduino-based Automatic Hand Sanitizer Dispenser** that provides a **touchless sanitizing solution**. The system detects a user's hand using an **IR sensor** and automatically activates a **servo motor** to press the sanitizer pump and dispense liquid.
+An **Arduino-based touchless hand sanitizer dispenser** that detects a user's hand via an IR sensor and activates a servo motor to press the pump automatically — no contact required.
 
-The device helps improve hygiene by **eliminating the need to touch sanitizer bottles**, making it suitable for **public spaces, classrooms, offices, and healthcare environments**.
+Suitable for **classrooms, offices, public spaces, and healthcare environments**.
+
 ---
 
 ## ✨ Features
 
-- 🤖 **Automatic hand detection** using IR sensor  
-- ⚙️ **Servo motor controlled pump mechanism**  
-- 🔌 **Simple Arduino-based hardware design**  
-- 🧩 **Low-cost and easy to build prototype**  
-- 🧼 Promotes **contactless hygiene**
+- 🤖 Touchless hand detection via IR sensor
+- ⚙️ Servo motor-controlled pump mechanism
+- 🔌 Simple Arduino-based hardware design
+- 💸 Low-cost, easy-to-build prototype
+- 🧼 Promotes contactless hygiene
 
 ---
 
 ## 🧰 Components Required
 
-- Arduino Uno / Arduino Nano  
-- IR Sensor Module  
-- Servo Motor (SG90 recommended)  
-- Breadboard  
-- Jumper Wires  
-- 5V Power Supply  
-- Sanitizer Bottle with Pump  
+| Component | Specification |
+|-----------|---------------|
+| Microcontroller | Arduino Uno / Nano |
+| Sensor | IR Sensor Module |
+| Actuator | Servo Motor (SG90) |
+| Power | 5V Supply / USB |
+| Other | Breadboard, Jumper Wires, Sanitizer Bottle with Pump |
 
 ---
 
 ## ⚙️ Working Principle
 
-1. The **IR sensor continuously monitors** the area in front of the dispenser.
-2. When a hand is placed near the sensor, it **detects the object** and sends a signal to the Arduino.
-3. The **Arduino processes the signal** and activates the servo motor.
-4. The **servo motor rotates** to press the sanitizer pump.
-5. After dispensing sanitizer, the servo **returns to its initial position**.
+1. IR sensor continuously monitors the area in front of the dispenser
+2. Hand detected → signal sent to Arduino
+3. Arduino activates servo motor
+4. Servo rotates to press the pump → sanitizer dispensed
+5. Servo returns to initial position
 
 ---
 
@@ -43,17 +43,17 @@ The device helps improve hygiene by **eliminating the need to touch sanitizer bo
 | Component | Arduino Pin |
 |-----------|-------------|
 | IR Sensor OUT | D2 |
-| Servo Signal | D9 |
 | IR Sensor VCC | 5V |
 | IR Sensor GND | GND |
+| Servo Signal | D9 |
 | Servo VCC | 5V |
 | Servo GND | GND |
 
 ---
 
-## 💻 Arduino Code
+## 💻 Code
 
-The main logic is implemented in `AutomaticHandSanitizer.ino`.
+**File:** `AutomaticHandSanitizer.ino`
 
 ```cpp
 #include <Servo.h>
@@ -69,26 +69,29 @@ void setup() {
 
 void loop() {
   int handDetected = digitalRead(irSensor);
-
-  if(handDetected) {
-    myServo.write(90); // Dispense sanitizer
+  if (handDetected) {
+    myServo.write(90);  // Press pump
     delay(1000);
-    myServo.write(0);  // Return to initial position
+    myServo.write(0);   // Return to position
   }
 }
+```
 
-🚀 How to Run the Project
-Connect all hardware components according to the circuit connections.
-Install Arduino IDE on your computer.
-Upload the file:
-AutomaticHandSanitizer.ino
-Power the Arduino using USB or a 5V adapter.
-Place your hand near the sensor to dispense sanitizer automatically.
+---
 
+## 🚀 How to Run
 
-🔮 Future Improvements
-Add Ultrasonic Sensor for more accurate hand detection
-Implement battery-powered portable design
-Add LCD display to monitor sanitizer usage
-Integrate IoT features to track sanitizer levels remotely
+1. Wire all components per the circuit table above
+2. Open **Arduino IDE** and load `AutomaticHandSanitizer.ino`
+3. Upload to Arduino board
+4. Power via USB or 5V adapter
+5. Place hand near sensor → sanitizer dispensed automatically
 
+---
+
+## 🔮 Future Improvements
+
+- [ ] Ultrasonic sensor for more accurate hand detection
+- [ ] Battery-powered portable design
+- [ ] LCD display to monitor sanitizer levels
+- [ ] IoT integration for remote level tracking
